@@ -46,6 +46,8 @@ public class Z_Practice {
         System.out.println("평균 : " + avg);
         System.out.println("판정 : " + result);
 
+        sc.close();
+
 
 
     }
