@@ -4,7 +4,6 @@ package org.example.chapter02;
 // : 특정조건을 만족할 때까지 동일한 작업 반복
 // - for(~동안), while(~동안), do-while
 
-import java.util.Scanner;
 
 public class C_For {
     public static void main(String[] args) {
@@ -66,8 +65,9 @@ public class C_For {
                 System.out.println(( i + 2 ) + " X " + ( j + 1 ) + " = " + ( i + 2 ) * ( j + 1 ));
             }
         }
-        //int i = 0;// for문과 다른 영역(scope)
+        //int i = 0;// for 문과 다른 영역(scope)
         //int i = 1; 동일한 영역 내애ㅔ서 같은 이름의 변수 선언 불가.
+
 
 
 
