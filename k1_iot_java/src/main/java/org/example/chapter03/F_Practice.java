@@ -36,5 +36,6 @@ public class F_Practice {
         list.add(3, 50);
         System.out.println("3번자리 50추가 리스트: " + list);
         //cf)존재하지 않은 인덱스에 접근하면 예외 발생 IndexOutOfBoundException
+
     }
 }
