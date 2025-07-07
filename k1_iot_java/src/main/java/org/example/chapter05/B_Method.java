@@ -51,7 +51,7 @@ class Example {
         return result;
     }
 
-    //반환값x, 매개변수x
+    //반환값 x, 매개변수 x
     void print99dan() {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
