@@ -38,5 +38,9 @@ class ABook {
 // : private으로 선언된 변수는 같은 클래스 내부에서만 접근 가능하며, 상속받은 자식 클래스에서는 접근할 수 있다. (O/X)
 // sol) x, 상속받은 자식 클래스 접근지정자 == protected
 
-public class Z_Review {
+public class F_Sol {
+    public static void main(String[] args) {
+        Child child = new Child();
+    }
 }
+
