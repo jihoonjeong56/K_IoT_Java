@@ -31,7 +31,7 @@ package org.example.chapter08;
 //[접근제어자] 반환타입 메서드명(매개변수 나열...) {구현부- 메서드의 기능 동작}
 
 //cf) 메서드 오버라이딩 VS 추상 메서드
-// - 추상 메서드: 반드시 자식 클래스에서 오버라이딩9구현부를 명시)
+// - 추상 메서드: 반드시 자식 클래스에서 오버라이딩(구현부를 명시)
 // - 일반 메서드: 필요에 따라 오버라이딩 가능
 
 //추상 클래스
@@ -69,27 +69,32 @@ abstract class Tiger {
 // 4. 추상 클래스 예시
 abstract class Animal {
     abstract void makeSound();
+
     //일반 메서드
     void eat() {
         System.out.println("동물은 먹이를 먹습니다.");
     }
 }
-class Dog extends Animal{
+
+class Dog extends Animal {
     //추상메서드는 반드시 재정의
     @Override
     void makeSound() {
         System.out.println("멍멍");
     }
+
     // 일반 메서드는 선택적 재정의
     @Override
     void eat() {
         System.out.println("강아지는 개껌을 먹습니다.");
     }
-    void bark(){
+
+    void bark() {
         System.out.println("강아지는 멍멍하고 짖어요");
     }
 }
-class Cat extends Animal{
+
+class Cat extends Animal {
     @Override
     void makeSound() {
         System.out.println("미야옹");
