@@ -1,5 +1,6 @@
 package org.example.chapter10.practice01;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -15,6 +16,10 @@ public class InventorySystem {
             System.out.println("2. Read  전체 책 조회");
             System.out.println("3. Update 책 수정");
             System.out.println("4. Delete 책 삭제");
+            System.out.println("5. 책 통합 검색");
+            System.out.println("6. 책 카테고리 검색");
+            System.out.println("7. 책 가격 검색");
+            System.out.println("0. 프로그램 종료");
 
             try {
                 //sc.nextLine() - 입력값이 문자열로 인식
@@ -66,20 +71,84 @@ public class InventorySystem {
                         String removedId = sc.nextLine();
                         manager.remove(removedId);
                         break;
+                    case 5:
+                        System.out.println("Enter Book Title: ");
+                        String keyword = sc.nextLine();
+                        List<Item> searchResults = manager.search(keyword);
+                        if (searchResults.isEmpty()) {
+                            System.out.println("No item found in keyword: " + keyword);
+                        } else {
+                            for (Item item : searchResults) {
+                                item.display();
+                            }
+                        }
+                        break;
+                    case 6:
+                        System.out.println("Enter Book Category: ");
+                        String searchCategory = sc.nextLine();
+                        List<Item> categoryResults = manager.searchByCategory(searchCategory);
+                        if (categoryResults.isEmpty()) {
+                            System.out.println("No item found in keyword: " + searchCategory);
+                        } else {
+                            for (Item item : categoryResults) {
+                                item.display();
+                            }
+                        }
+                        break;
+                    case 7:
+                        System.out.println("Enter minimum Price: ");
+                        int minPrice = Integer.parseInt(sc.nextLine());
+                        System.out.println("Enter maximum Price: ");
+                        int maxPrice = Integer.parseInt(sc.nextLine());
+                        List<Item> priceResult = manager.searchByPriceRange(minPrice, maxPrice);
+
+                        if (priceResult.isEmpty()) {
+                            System.out.println("No items in price range");
+                        } else {
+                            for (Item item : priceResult) {
+                                item.display();
+                            }
+                        }
+                        break;
+                    case 0:
+                        System.out.println("Exit The Program? If you want to exit, please Enter Y");
+                        if (sc.nextLine().equalsIgnoreCase("y")) {
+                            System.out.println("Exit: ");
+                            sc.close();
+                            return; // while 무한 루프 탈출
+                        }
+                        System.out.println("Please Enter again");
+                        break; // switch case의 탈출(while 종료 아님)
+                    default:
+                        System.out.println("Not Value, Please Again.");
                 }
 
             } catch (NumberFormatException e) {
                 //숫자형태의 입력이 아닌경우 발생
                 System.out.println("Pleas Enter a valid number: " + e.getMessage());
-            }catch (NoSuchElementException e){
+            } catch (NoSuchElementException e) {
                 //컬렉션에서 요소를 가져올 때 해당 요소가 없는 경우 발생하는 예외
                 // - 존재하지 않는 것을 가져올 때 발생
                 System.out.println(e.getMessage());
 
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
+//        }
+//        int num = 0;
+//        switch (num) {
+//            case 1: {
+//                int a;
+//                //코드구문
+//                break;
+//            }
+//            case 2:
+//                {
+//                    //코드구문
+//                    break;
+//                }            case 3:{
+//                // case 3 만의 스코프(영역) 설계 : 각 case가 지역변수의 범위를 가진 독립 블록(안전성 확보
+            //}
         }
     }
 }
