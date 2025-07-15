@@ -28,7 +28,7 @@ package org.example.chapter12;
       : 학생 데이터를 저장하는 ( List<Student> )
       6가지 기능 수행
 
-      4) DTO StudentRequestDto 요청, StudentRequestDto 응답
+      4) DTO StudentRequestDto 요청, StudentResponseDto 응답
  */
 
 import org.example.chapter12.controller.StudentController;
