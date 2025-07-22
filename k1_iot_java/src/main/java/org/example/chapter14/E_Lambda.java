@@ -8,7 +8,7 @@ package org.example.chapter14;
     1. Predicate<T>(판단하다)
      : 입력값을 받아 조건을 검사한느데 사용
      : 메서드
-            - boolean test(T t): 주어진 입력값이 조건을 만족하면  true, 그렇지 않으면 false
+            - boolean  -> .test(T t): 주어진 입력값이 조건을 만족하면  true, 그렇지 않으면 false
             - and(Predicate other), or(Predicate other), negate(): Predicate 조합에 사용
 
             cf)negate : 부정하다(현재 결과 역전)
@@ -39,11 +39,21 @@ package org.example.chapter14;
     void accept(T t);
  }
 
+4. Supplier<T> (공급하다.)
+    : 값을 공급(생성)하는데 사용, 입력 값이 필요로 하지 않음
+    : 외부에서 값을 가져오거나, 데이터를 생성하여 반환하는 역할
+  메서드
+    - T get(): 반환
+@FunctionalInterface
+interface Supplier<T> {
+    T get();
+}
  */
 
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class E_Lambda {
     public static void main(String[] args) {
@@ -84,6 +94,15 @@ public class E_Lambda {
 
         Consumer<String> combinedConsumer = printMessage.andThen(printLength);
         combinedConsumer.accept("123");
+
+        System.out.println("====Supplier====");
+        // Math.random() : 0.0 ~1.0 사이의 무작위 실수를 반환
+        Supplier<Double> randomValue = () -> Math.random();
+        //Supplier<Double> random = () -> {
+        //    return Math.random();
+        //};
+        System.out.println(randomValue.get());
+
 
     }
 }
