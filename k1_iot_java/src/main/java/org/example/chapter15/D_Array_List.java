@@ -32,21 +32,32 @@ public class D_Array_List {
         // 1) new ArrayList<>();
         //  : 가변 가능 (길이변경 가능, 수정도 가능)
         //  - 가장 일반적인 생성자 사용 리스트 생성 방식
-        List<String> list = new ArrayList<>();
+        List<String> list = new ArrayList<>(List.of("ad","cd"));
+        System.out.println(list);
+        list.add("zd");
+        System.out.println(list);
+        list.set(1, "xc");
+        System.out.println(list);
+        //우선순위 : ArrayList<>() > List.of() ????????????
+
 
         // 2) Array.asList();
         //  : 가변 불가능(길이 고정, 수정은 가능)
         //  - 가짜 ArrayList: Arrays 클래스 내부에서 구현된 별개의 ArrayList(컬렉션 프레임워크 아님)
         //  - 배열을 리스트로 변환
         List<String> asList = Arrays.asList("a", "b");
+
         // 3) List.of();
         //  : 불변 (길이 고정, 수정 불가)
         //  - 읽기 전용 리스트 생성
         //  - null 값을 포함할 수 없음
         List<String> listOf = List.of("a", "b");
+
         // 4) Stream.of().collect(Collectors.toList());
         //  : 가변 가능(1번과 동일 형태)
         List<String> collectList = Stream.of("a", "b").collect(Collectors.toList());
+
+
         // 5) List.copyOf();
         //  : 불변( 길이 고정, 수정 불가)
         //  - 기존 리스트의 불변 복사본 생성
