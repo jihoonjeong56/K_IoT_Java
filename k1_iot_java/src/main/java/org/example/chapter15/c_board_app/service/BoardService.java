@@ -1,5 +1,6 @@
 package org.example.chapter15.c_board_app.service;
 
+import org.example.chapter15.c_board_app.dto.BoardDetailResponseDto;
 import org.example.chapter15.c_board_app.dto.BoardRequestDto;
 import org.example.chapter15.c_board_app.dto.BoardResponseDto;
 
@@ -12,7 +13,7 @@ public interface BoardService {
     List<BoardResponseDto> findAllBoards();
 
     //조회 단건 - 요청 id | 응답 BoardResponseDto
-    BoardResponseDto findBoardById(Long id);
+    BoardDetailResponseDto findBoardById(Long id);
 
     //수정 요청 id, RequestDto |  응답
     void updateBoard(Long id, BoardRequestDto dto);

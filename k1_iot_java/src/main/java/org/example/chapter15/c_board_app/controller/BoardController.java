@@ -1,5 +1,6 @@
 package org.example.chapter15.c_board_app.controller;
 
+import org.example.chapter15.c_board_app.dto.BoardDetailResponseDto;
 import org.example.chapter15.c_board_app.dto.BoardRequestDto;
 import org.example.chapter15.c_board_app.dto.BoardResponseDto;
 import org.example.chapter15.c_board_app.service.BoardService;
@@ -39,8 +40,8 @@ public class BoardController {
     }
 
     //3. 게시판 조회 단건
-    public BoardResponseDto getBoardById(Long id){
-        BoardResponseDto dto = null;
+    public BoardDetailResponseDto getBoardById(Long id){
+        BoardDetailResponseDto dto = null;
         try {
             dto = boardService.findBoardById(id);
             if(dto == null){

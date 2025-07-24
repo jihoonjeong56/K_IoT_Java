@@ -10,13 +10,13 @@ public class BoardResponseDto {
     private Long id;
     private  String title;
     private String author;
-    private String content;
+
 
     public BoardResponseDto(Board board){
         this.id = board.getId();
         this.title = board.getTitle();
         this.author = board.getAuthor();
-        this.content = board.getContent();
+
     }
     public static BoardResponseDto fromEntity(Board board){
         return new BoardResponseDto(board);

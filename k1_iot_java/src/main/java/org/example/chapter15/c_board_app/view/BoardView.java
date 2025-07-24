@@ -1,6 +1,7 @@
 package org.example.chapter15.c_board_app.view;
 
 import org.example.chapter15.c_board_app.controller.BoardController;
+import org.example.chapter15.c_board_app.dto.BoardDetailResponseDto;
 import org.example.chapter15.c_board_app.dto.BoardRequestDto;
 import org.example.chapter15.c_board_app.dto.BoardResponseDto;
 
@@ -56,7 +57,7 @@ public class BoardView {
                         System.out.println("조회할 게시글 id");
                         Long id = sc.nextLong();
                         sc.nextLine();
-                        BoardResponseDto dto = boardController.getBoardById(id);
+                        BoardDetailResponseDto dto = boardController.getBoardById(id);
                         System.out.println(dto);
                         break;
                     }
