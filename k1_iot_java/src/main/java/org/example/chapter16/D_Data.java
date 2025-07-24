@@ -1,0 +1,84 @@
+package org.example.chapter16;
+
+import lombok.*;
+
+import java.util.Date;
+
+/*
+    DTO, VO, DAO, Entity
+    : 데이터를 목적에 따라 정의하는 구조
+
+    1) DTO(Data Transfer Object): 데이터를 전달하기 위한 객체
+    2) VO(Value Object): 값 자체를 표현하는 객체
+    3) DAO(Data Access Object): DataBase에 접근하는 역할을 하는 객체
+    4) Entity : 실제 DB 테이블과 매핑되는 클래스
+ */
+//1) DTO
+// : 계층 간 데이터 교환을 위해 사용하는 객체
+// - 로직을 가지지 않는 순수한 데이터 객체(비즈니스 로직이 없고, Getter & Setter만 존재)
+// - 요청(Request)과 응답(Response) 객체로 구분하여 사용
+@Getter@AllArgsConstructor@Setter
+@NoArgsConstructor
+class UserSignInRequestDto{
+    //로그인을 위한 요청값
+    private String userId;
+    private String password;
+}
+
+//2) VO
+// : 특정 값을 표현하는 객체
+// - 주로 사용자 주소, 이름, 좌표 등 도메인에서 의미있는 값을 표현
+// - 불변성을 가짐(읽기 전용): 생성시 내용 변경을 불가
+// >> 주로 필드값을 final, Getter 만 가짐
+@AllArgsConstructor@Getter@EqualsAndHashCode
+class Address{
+    //데이터 식별 값 필요 없음(id가 없음)
+    // 동일성 보다 동등성이 중요(VO는 값이 같으면 동일하다고 봄)
+    private final String city;
+    private final String zipcode;
+}
+
+//3) DAO
+// : 데이터 베이스 접근 객체
+// - 서비스 모델과 데이터베이스를 연결하는 역할
+// - DB에 접근해 CRUD 작업을 담당
+// >> 일반적으로 JDBC 또는 JPA, MyBatis를 통해 구현
+// >> Spring 기반 프로젝트에서 Repository 또는 Mapper로 대체됨
+
+//JDBC 기반 (Java + DataBase)
+@AllArgsConstructor
+class UserResponseDto{
+    String id;
+    String nickname;
+}
+// 실질적인 로직은 DAO  대신에 JPA - Repository interface 를 사용
+class UserDao{
+    public UserResponseDto getUserById(String userId){
+        //DB에 접근해 해당 userId 사용자의 닉네임을 조회했다고 가증
+        String id = "qwe";
+        String nickname = "개구리";
+        return new UserResponseDto(id, nickname);
+    }
+}
+
+//4) Entity
+// : 실제 데이터베이스의 테이블에 해당하는 데이터 구조와 매핑되는 클래스
+// - JPA(Java Persistence API)와 같은 ORM(Object-Related Mapping) 툴에서 사용
+// - DB 의 각 레코드와매핑
+// > @Entity, @Id, @Column 등을 사용
+@Getter
+@Setter
+//@Entity - entity 클래스임을 명시
+//@Table(name = "users") - DB 의 users 테이블과 연결을 명시
+class User{
+    private Long id;
+    private String userId;
+    private String password;
+    private String name;
+    private String email;
+    private Date createdAt;
+}
+
+public class D_Data {
+
+}
