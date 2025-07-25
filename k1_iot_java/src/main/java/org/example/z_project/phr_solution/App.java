@@ -1,6 +1,9 @@
 package org.example.z_project.phr_solution;
 
+import org.example.z_project.phr_solution.controller.HealthRecordController;
 import org.example.z_project.phr_solution.controller.PatientController;
+import org.example.z_project.phr_solution.dto.health_record.request.RecordCreateRequestDto;
+import org.example.z_project.phr_solution.dto.health_record.response.RecordListResponseDto;
 import org.example.z_project.phr_solution.dto.patient.request.PatientCreateRequestDto;
 import org.example.z_project.phr_solution.dto.patient.request.PatientUpdateRequestDto;
 import org.example.z_project.phr_solution.dto.patient.response.PatientDetailResponseDto;
@@ -35,13 +38,14 @@ import java.util.List;
  */
 public class App {
     private static final PatientController patientController = new PatientController();
+    private static final HealthRecordController healthRecordController = new HealthRecordController();
 
     private static boolean processChoice(int choice) {
         switch (choice) {
             //환자 관련 기능
             case 1: {
                 PatientCreateRequestDto requestDto = InputHandler.createPatientRequest();
-                if(requestDto == null){
+                if (requestDto == null) {
                     System.out.println("필수 입력값을 유효하게 입력해야 합니다");
                     break;
                 }
@@ -70,7 +74,7 @@ public class App {
             case 4: {
                 long id = InputHandler.getIdInput();
                 PatientUpdateRequestDto requestDto = InputHandler.updatePatientRequestDto();
-                if(requestDto == null){
+                if (requestDto == null) {
                     System.out.println("필수 입력값을 유효하게 입력해야 합니다");
                     break;
                 }
@@ -84,8 +88,41 @@ public class App {
             }
 
             //건강 기록 관리
+            case 6: {
+                RecordCreateRequestDto requestDto = InputHandler.createRecordRequest();
+                if (requestDto == null) {
+                    System.out.println("필수 입력값을 유효하게 입력해야 합니다");
+                    break;
+                }
+                healthRecordController.createRecord(requestDto);
+                break;
+            }
+            case 7: {
+                List<RecordListResponseDto> records = healthRecordController.getAllRecords();
+                if(records.isEmpty()){
+                    System.out.println("건강기록이 없습니다.");
+                }else {
+                    records.forEach(System.out::println);
+                }
+                break;
+            }
+            case 8: {
+                String diagnosisFilter = InputHandler.getInput("필터조건(진단명)");
+                List<RecordListResponseDto> filteredRecords = healthRecordController.filterRecordsByDiagnosis(diagnosisFilter);
+                if(filteredRecords.isEmpty()){
+                    System.out.println("검색결과를 찾을 수 없습니다.");
+                }else {
+                    filteredRecords.forEach(System.out::println);
+                }
+                break;
+            }
+            case 9: {
+                long id = InputHandler.getIdInput();
+                healthRecordController.deleteRecord(id);
+                break;
+            }
 
-            case 10:{
+            case 10: {
                 System.out.println("프로그램 종료");
                 return false;
             }

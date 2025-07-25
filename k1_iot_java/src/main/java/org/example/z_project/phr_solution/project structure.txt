@@ -1,6 +1,7 @@
 phr_solution/
 ├── App.java (실행 메인)
-│
+├── util/
+│   └── DateValidator.java
 ├── controller/
 │   ├── PatientController.java
 │   └── HealthRecordController.java
@@ -20,11 +21,11 @@ phr_solution/
 │   │
 │   └──health_record/
 │       ├── request/
-│       │   ├── .java
-│       │   └── RecordResponseDto.java
+│       │   ├──
+│       │   └── RecordCreateRequestDto.java
 │       └── response/
-│           ├── .java
-│           └── RecordResponseDto.java
+│           ├──
+│           └── RecordListResponseDto.java
 │
 ├── entity/
 │   ├── Patient.java
