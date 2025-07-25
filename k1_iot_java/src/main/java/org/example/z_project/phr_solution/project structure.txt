@@ -1,0 +1,40 @@
+phr_solution/
+├── App.java (실행 메인)
+│
+├── controller/
+│   ├── PatientController.java
+│   └── HealthRecordController.java
+│
+├── handler/
+│   ├── InputHandler.java
+│   └── MenuPrinter.java
+│
+├── dto/
+│   ├──patient/
+│   │   ├── request/
+│   │   │   ├── PatientCreateRequestDto.java
+│   │   │   └── PatientUpdateRequestDto.java
+│   │   └── response/
+│   │       ├── PatientDetailResponseDto.java
+│   │       └── PatientListResponseDto.java
+│   │
+│   └──health_record/
+│       ├── request/
+│       │   ├── .java
+│       │   └── RecordResponseDto.java
+│       └── response/
+│           ├── .java
+│           └── RecordResponseDto.java
+│
+├── entity/
+│   ├── Patient.java
+│   └── HealthRecord.java
+├── repository/
+│   ├── PatientRepository.java
+│   └── HealthRecordRepository.java
+├── service/
+│   ├── PatientService.java
+│   ├── HealthRecordService.java
+│   └── implement/
+│       ├── PatientServiceImpl.java
+│       └── HealthRecordServiceImpl.java
